@@ -10,6 +10,14 @@ const Header = () => (
       <Link to="/helloworld">Hello World</Link>
     </nav>
 
+    <nav>
+      <Link to="/product">Product</Link>
+    </nav>
+
+    <nav>
+      <Link to="/cart">Cart</Link>
+    </nav>
+
     <hr />
   </header>
 );
