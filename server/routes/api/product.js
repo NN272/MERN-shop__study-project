@@ -63,5 +63,49 @@ module.exports = (app) => {
             });
         });
     });
-    
+
+
+    app.get('/product/getAll', (req, res, next) => {
+        Product.find({}, (err, products) => {
+            if(err) {
+                return res.send({
+                    success: false,
+                    message: 'Server error'
+                });
+            }
+
+            return res.send({
+                message: products
+            });
+        });
+    });
+	
+
+    app.get('/product/findproduct', (req, res, next) => {
+        const {query} = req;
+        const id = query;
+        Product.find({
+            _id: id.id
+        }, (err, products) => {
+            if(err) {
+                return res.send({
+                    success: false,
+                    message: 'Server error'
+                });
+            }
+            if(products.length != 1) {
+                return res.send({
+                    success: false,
+                    message: 'Invalid'
+                });
+            }
+
+            const product = products[0];
+
+            return res.send({
+                success: true,
+                message: product
+            });
+        });
+    });
 }
