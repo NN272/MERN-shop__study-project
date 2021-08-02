@@ -14,7 +14,6 @@ module.exports = (app) => {
 
         let {email} = body;
 
-
         if(!firstName) {
             return res.send({
                 success: false,
@@ -41,7 +40,6 @@ module.exports = (app) => {
         }
 
         email = email.toLowerCase();
-
 
         User.find({
             email: email

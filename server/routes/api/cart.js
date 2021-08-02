@@ -52,4 +52,28 @@ module.exports = (app) => {
             });
         });
     });
+
+    app.get('/cart/getAll', (req, res, next) => {
+        const {query} = req;
+
+        const {token} = query;
+
+        User.find({
+            _id: token
+        }, (err, products) => {
+            if(err) {
+                return res.send({
+                    success: false,
+                    message: 'Server error'
+                });
+            }
+
+            const user = users[0];
+
+            return res.send({
+                products: user.cart,
+                message: 'Скорее бы уже этот бэк доделать('
+            });
+        });
+    });
 }
