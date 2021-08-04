@@ -1,10 +1,17 @@
 import React from 'react';
+import styled from 'styled-components';
 
-const Footer = () => (
-  <footer>
-    <hr />
-    <p>Footer</p>
-  </footer>
-);
+const Footer = () => {
+  const Footr = styled.footer`
+    margin-top: 50px;
+  `;
+
+  return (
+    <Footr>
+      <hr />
+      <p>Footer</p>
+    </Footr>
+  );
+};
 
 export default Footer;

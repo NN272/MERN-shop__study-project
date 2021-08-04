@@ -3,7 +3,7 @@ import "whatwg-fetch";
 
 import { getFromStorage, setInStorage } from "../../utils/storage";
 
-import Product from "./Product/Product";
+import ProductContainer from "./Product/ProductContainer.js";
 
 class Home extends Component {
   constructor(props) {
@@ -297,6 +297,8 @@ class Home extends Component {
       );
     }
 
+
+
     if (token) {
       return (
         <>
@@ -305,7 +307,7 @@ class Home extends Component {
             {getFromStorage("the_main_app").lastName}
           </p>
           <button onClick={this.logout}>Logout</button>
-          <Product></Product>
+          <ProductContainer></ProductContainer>
         </>
       );
     }
