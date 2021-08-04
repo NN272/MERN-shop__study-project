@@ -15,6 +15,9 @@ export const productAPI = {
     });
   },
   getProduct(id) {
-    return instance.get(`product/findproduct?id=${id}`);
+    return instance.get(`product/findproduct?id=${id}`).then(response => {
+      console.log(response);
+      return response.data.message;
+    });
   },
 };

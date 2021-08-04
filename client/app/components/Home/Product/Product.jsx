@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import {Link} from "react-router-dom";
 
 const Product = (props) => {
   let Container = styled.div`
@@ -34,6 +35,7 @@ const Product = (props) => {
     margin-block-end: 0px;
   `;
 
+  console.log(props);
   return (
     <Wrapper>
       {
@@ -41,7 +43,9 @@ const Product = (props) => {
             p =>
                 <Container>
                     <div>
-                      <Image src={p.image}></Image>
+                      <Link to={"/product/"+p._id}>
+                        <Image src={p.image}></Image>
+                      </Link>
                       <Title>{p.title}</Title>
                       <Price>{p.price} Гривнів</Price>
                     </div>
