@@ -4,19 +4,22 @@ import {setProductInfo, toggleIsFetching} from '../../redux/reducers/productRedu
 import {withRouter} from "react-router-dom";
 import ProductPage from "./ProductPage.jsx";
 import {productAPI} from "../../api/api";
+import {getFromStorage} from "../../utils/storage.js";
 
 class ProductPageContainer extends React.Component {
+
     componentDidMount() {
         let id = this.props.match.params.id;
         productAPI.getProduct(id).then(response => {
-            console.log(response)
             this.props.setProductInfo(response);
         });
     }
 
     render() {
+        let data = getFromStorage("the_main_app");
+
         return <>
-                   <ProductPage {...this.props} product={this.props.product} />
+                   <ProductPage {...this.props} user_data={data} product={this.props.product} />
         </>
     }
 }

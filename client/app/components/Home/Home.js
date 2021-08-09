@@ -135,6 +135,7 @@ class Home extends Component {
             email: json.email,
             lastName: json.lastName,
             firstName: json.firstName,
+            cart: []
           });
           this.setState({
             signInError: json.message,

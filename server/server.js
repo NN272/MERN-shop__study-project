@@ -26,7 +26,6 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 
 // API routes
-require('./routes/api/cart.js')(app);
 require('./routes/api/signin.js')(app);
 require('./routes/api/product.js')(app);
 
