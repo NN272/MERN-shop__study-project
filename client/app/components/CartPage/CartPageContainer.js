@@ -21,7 +21,7 @@ class CartPageContainer extends React.Component {
             <ItemsWrapper>
                 {
                     cart.map(cart => {
-                        return <CartProduct image={cart.image} title={cart.title} price={cart.price} category={cart.category} />
+                        return <CartProduct history={this.props.history} image={cart.image} title={cart.title} price={cart.price} category={cart.category} />
                     })
                 }
             </ItemsWrapper>

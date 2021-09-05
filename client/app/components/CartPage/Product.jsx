@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 
 const CartProduct = (props) => {
@@ -22,6 +22,7 @@ const CartProduct = (props) => {
 
     const Image = styled.img`
         width: 150px;
+        border-radius: 5px;
     `;
 
     const InfoWrapper = styled.div`
@@ -33,8 +34,47 @@ const CartProduct = (props) => {
     `;
 
     const Price = styled.h2`
-        margin-top: 55px;
+        margin-top: 82px;
     `;
+
+    const SecondEl = styled.div`
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        align-items: center;
+        height: 225px;
+        margin-right: 20px;
+    `;
+
+    let AmountWrapper = styled.div`
+        display: flex;
+    `;
+
+    let DecreaseAmount = styled.button`
+        height: 20px;
+        margin-right: 5px;
+        width: 25px;
+        font: revert;
+    `;
+
+    let IncreaseAmount = styled.button`
+        height: 20px;
+        margin-left: 5px;
+        width: 25px;
+        font: revert;
+    `;
+
+    let Button = styled.button`
+        color:#fff;
+        background-color:#0d6efd;
+        border-color:#0d6efd;
+        width: 140px;
+        height: 50px;
+        border-radius: 10px;
+        margin-top: 30px;
+    `;
+
+    const [amount, setAmount] = useState(1);
 
     return <Wrapper>
         <FirstEl>
@@ -46,6 +86,17 @@ const CartProduct = (props) => {
             </InfoWrapper>
         </FirstEl>
 
+        <SecondEl>
+            <AmountWrapper>
+                <DecreaseAmount onClick={
+                        (amount > 1) ? () => setAmount(amount-1) : undefined
+                }>-</DecreaseAmount>
+                <h4 style={{marginBlockStart: "0px"}}>{amount}</h4>
+                <IncreaseAmount onClick={() => setAmount(amount+1)}>+</IncreaseAmount>
+            </AmountWrapper>
+
+            <Button onClick={() => props.history.push('/')}>Order</Button>
+        </SecondEl>
     </Wrapper>
 }
 
