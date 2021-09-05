@@ -13,6 +13,7 @@ import "./styles/styles.scss";
 import ReactDOM from 'react-dom';
 import store from './redux/redux-store.js';
 import ProductPageContainer from "./components/ProductPage/ProductPageContainer.js";
+import CartPageContainer from "./components/CartPage/CartPageContainer.js";
 
 let rerenderEntireTree = (state) => {
   ReactDOM.render(
@@ -20,6 +21,7 @@ let rerenderEntireTree = (state) => {
         <Provider store={store}>
           <App>
             <Switch>
+             <Route path="/cart" component={CartPageContainer} />
               <Route path="/product/:id" component={ProductPageContainer}/>
               <Route exact path="/" component={Home} />
               <Route path="/helloworld" component={HelloWorld} />
