@@ -1,5 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
+import {setInStorage} from '../../utils/storage.js';
 
 const CartProduct = (props) => {
     const Wrapper = styled.div`
@@ -71,10 +72,13 @@ const CartProduct = (props) => {
         width: 140px;
         height: 50px;
         border-radius: 10px;
-        margin-top: 30px;
     `;
 
     const [amount, setAmount] = useState(1);
+
+    const ifIndex = (element) => element._id === props.id;
+
+    const removeItem = () => props.cart.splice(props.cart.findIndex(ifIndex), 1);
 
     return <Wrapper>
         <FirstEl>
@@ -95,7 +99,17 @@ const CartProduct = (props) => {
                 <IncreaseAmount onClick={() => setAmount(amount+1)}>+</IncreaseAmount>
             </AmountWrapper>
 
-            <Button onClick={() => props.history.push('/')}>Order</Button>
+            <Button onClick={() => {
+                        removeItem();
+                        setInStorage("the_main_app", {
+                            cart: props.cart,
+                            firstName: props.data.firstName,
+                            lastName: props.data.lastName,
+                            email: props.data.email,
+                            token: props.data.token,
+                            userId: props.data.userId
+                        })
+                    }}>Order</Button>
         </SecondEl>
     </Wrapper>
 }
