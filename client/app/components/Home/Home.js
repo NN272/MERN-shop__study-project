@@ -8,7 +8,6 @@ import ProductContainer from "./Product/ProductContainer.js";
 class Home extends Component {
   constructor(props) {
     super(props);
-    //lolololololo
     this.state = {
       isLoading: true,
       token: "",
