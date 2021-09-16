@@ -29,26 +29,32 @@ class CartPageContainer extends React.Component {
             margin-top: 50px;
         `;
 
-        return <div>
-            <ItemsWrapper>
-                {
-                    cart.map(item => {
-                        return <CartProduct id={item._id} history={this.props.history} data={data} cart={cart} image={item.image} title={item.title} price={item.price} category={item.category} />
-                    })
-                }
+        if(cart.length != 0) {
+            return <div>
+                <ItemsWrapper>
+                    {
+                        cart.map(item => {
+                            return <CartProduct id={item._id} history={this.props.history} data={data} cart={cart} image={item.image} title={item.title} price={item.price} category={item.category} />
+                        })
+                    }
 
-                <Button onClick={
-                            () => setInStorage("the_main_app", {
-                                cart: [],
-                                email: data.email,
-                                firstName: data.firstName,
-                                lastName: data.lastName,
-                                token: data.token,
-                                userId: data.userId
-                            })
-                        }>Order all</Button>
-            </ItemsWrapper>
-        </div>
+                    <Button onClick={
+                                () => setInStorage("the_main_app", {
+                                    cart: [],
+                                    email: data.email,
+                                    firstName: data.firstName,
+                                    lastName: data.lastName,
+                                    token: data.token,
+                                    userId: data.userId
+                                })
+                            }>Order all</Button>
+                </ItemsWrapper>
+            </div>
+        } else {
+            return <div>
+                <h3 style={{textAlign: 'center', marginBlockStart: "100px", marginBlockEnd: "100px"}}>The cart is empty</h3>
+            </div>
+        }
     }
 }
 
