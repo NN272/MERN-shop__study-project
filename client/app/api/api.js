@@ -2,10 +2,7 @@ import * as axios from "axios";
 
 const instance = axios.create({
   withCredentials: true,
-  baseURL: "http://localhost:8080/",
-  headers: {
-    "Access-Control-Allow-Origin": "http://localhost:8080/"
-  }
+  baseURL: "http://localhost:8080/"
 });
 
 export const productAPI = {

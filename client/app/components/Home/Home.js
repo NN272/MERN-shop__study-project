@@ -115,12 +115,12 @@ class Home extends Component {
       isLoading: true,
     });
 
-    let cart = getFromStorage("the_main_app");
-    if(cart != null) {
-      cart = getFromStorage("the_main_app").cart;
-    } else {
-      cart = []
-    }
+    // let cart = getFromStorage("the_main_app");
+    // if(cart != null) {
+    //   cart = getFromStorage("the_main_app").cart;
+    // } else {
+    //   cart = []
+    // }
 
     fetch("/api/signin", {
       method: "POST",
@@ -141,7 +141,7 @@ class Home extends Component {
             email: json.email,
             lastName: json.lastName,
             firstName: json.firstName,
-            cart: cart
+            cart: []
           });
           this.setState({
             signInError: json.message,
