@@ -43,7 +43,6 @@ class Home extends Component {
 
     this.onSignIn = this.onSignIn.bind(this);
     this.onSignUp = this.onSignUp.bind(this);
-    this.logout = this.logout.bind(this);
   }
 
   componentDidMount() {
@@ -202,35 +201,6 @@ class Home extends Component {
       });
   }
 
-  logout() {
-    const obj = getFromStorage("the_main_app");
-
-    if (obj && obj.token) {
-      const { token } = obj;
-      fetch("/api/logout?token=" + token)
-        .then((res) => res.json())
-        .then((json) => {
-          if (json.success) {
-            this.setState({
-              token: "",
-              isLoading: false,
-            });
-            setInStorage("the_main_app", {
-              cart: obj.cart
-            });
-          } else {
-            this.setState({
-              isLoading: false,
-            });
-          }
-        });
-    } else {
-      this.setState({
-        isLoading: false,
-      });
-    }
-  }
-
   render() {
     const {
       isLoading,
@@ -312,11 +282,6 @@ class Home extends Component {
     if (token) {
       return (
         <>
-          <p>
-            Account --- {getFromStorage("the_main_app").firstName}{" "}
-            {getFromStorage("the_main_app").lastName}
-          </p>
-          <button onClick={this.logout}>Logout</button>
           <ProductContainer></ProductContainer>
         </>
       );

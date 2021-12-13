@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 const Footer = () => {
   const Footr = styled.footer`
-    margin-top: 50px;
+    margin-top: 200px;
   `;
 
   return (
